@@ -10,21 +10,74 @@ var config = {
   margin: {l: 50, r: 50, t: 50, b: 50},
   lineHeight: 10
 }
+config.chartFrame = {l: 50, t: 200, width: innerWidth-config.margin.l-config.margin.r, height: innerHeight-200-config.margin.b};
 
-var data = {};
+var masterData = {};
 
-var parse = function(d) {
-  return d;
+function parseProductionData(d) {
+  return {
+    AreaName: d["AreaName"],
+    ElementName: d["ElementName"],
+    Year: +d["Year"],
+    Value: +d["Value"]
+  };
 }
 
 queue()
-  .defer(d3.csv, "./data/tea-production.csv")
+  .defer(d3.csv, "./data/tea-production.csv", parseProductionData)
   .await(function(err, productionData) {
     if (!err) {
-      data.productionData = productionData;
+      var crossfilterObj = crossfilter(productionData);
+      var countryDimension = crossfilterObj.dimension(function(d) { return d["AreaName"]; });
+      var elementDimension = crossfilterObj.dimension(function(d) { return d["ElementName"]; });
+      elementDimension.filter("Production");
+
+      // CHINA FILTER
+      countryDimension.filter(function(d) {
+        if (typeof d == "undefined") {
+          return false;
+        }
+        else if (d.toLowerCase().indexOf("china") != -1 && d.toLowerCase() != "china") {
+          return false;
+        }
+        return true;
+      });
+
+      // get countries for max value in 2013
+      var yearDimension = crossfilterObj.dimension(function(d) { return d["Year"]; });
+      yearDimension.filter(2013);
+      var valueDimension = crossfilterObj.dimension(function(d) { return d["Value"]; });
+      var topCountries = valueDimension.top(20).map(function(d) { return d["AreaName"]; });
+
+      // get data all the data for countries with top Production in 2013
+      yearDimension.filter(null); yearDimension.dispose();
+      elementDimension.filter(null); elementDimension.dispose();
+      countryDimension.filter(topCountries);
+
+      var data = valueDimension.top(Infinity);
+      var dataCrossfilter = crossfilter(data);
+      masterData.production = {
+        data: data,
+        crossfilterObj: dataCrossfilter,
+        elementDimension: dataCrossfilter.dimension(function(d) { return d["ElementName"]; }),
+        countryDimension: dataCrossfilter.dimension(function(d) { return d["AreaName"]; }),
+        valueDimension: dataCrossfilter.dimension(function(d) { return d["Value"]; }),
+        yearDimension: dataCrossfilter.dimension(function(d) { return d["Year"]; }),
+        clearFilters: function() {
+          data.production.elementDimension.filter(null);
+          data.production.countryDimension.filter(null);
+          data.production.valueDimension.filter(null);
+          data.production.yearDimension.filter(null);
+        }
+      }
+      countryDimension.dispose();
+      elementDimension.dispose();
+      yearDimension.dispose();
+      valueDimension.dispose();
+      crossfilterObj = null;
       scene1();
     }
-  })
+  });
 
 var sceneTransition = function(callback) {
   setTimeout(function() {
