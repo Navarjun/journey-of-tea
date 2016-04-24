@@ -3,6 +3,7 @@
 function scene1() {
   var scene1G = svg.append("g")
     .classed("scene", true)
+    .attr("id", "scene1G")
     .attr("transform", "translate(0,0)");
   var placeholder = scene1G.append("text")
     .attr("x", "-10000px")

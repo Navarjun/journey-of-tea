@@ -1,12 +1,16 @@
 "use strict";
 
 function scene2() {
+  var scene2G = d3.select("#scene2G");
+  d3.select("#scene1G").remove();
 
+  // var scaleX =
 }
 
 function setupScene2() {
   var scene2G = svg.append("g")
     .classed("scene", true)
+    .attr("id", "scene2G")
     .attr("transform", "translate("+innerWidth+",0)");
 
   var titleLine1 = scene2G.append("text")
