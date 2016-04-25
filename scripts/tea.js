@@ -101,7 +101,7 @@ queue()
       yearDimension.dispose();
       valueDimension.dispose();
       crossfilterObj = null;
-      setupScene5();
+      scene1();
     }
   });
 
