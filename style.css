@@ -24,6 +24,15 @@ body {
 }
 
 .sceneTagLine {
-  fill: #AAA;
+  fill: #444;
   font-size: 1em;
+}
+
+.yAxisMainLabel {
+  fill: #AAA;
+}
+
+.factsG text {
+  font-size: 2em;
+  fill: #444;
 }

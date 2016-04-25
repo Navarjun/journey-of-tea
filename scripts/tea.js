@@ -6,11 +6,12 @@ var svg = d3.select("#canvas")
 
 var config = {
   animationTime: 2000,
-  transitionAnimationTime: 2000,
+  transitionAnimationTime: 1000,
+  animationTimeDelay: 100,
   margin: {l: 50, r: 50, t: 50, b: 50},
   lineHeight: 10
 }
-config.chartFrame = {l: 50, t: 200, width: innerWidth-config.margin.l-config.margin.r, height: innerHeight-200-config.margin.b};
+config.chartFrame = {l: 100, t: 150, width: innerWidth-config.margin.l-config.margin.r-100, height: innerHeight-200-config.margin.b};
 
 var masterData = {};
 
@@ -52,7 +53,7 @@ queue()
       // get data all the data for countries with top Production in 2013
       yearDimension.filter(null); yearDimension.dispose();
       elementDimension.filter(null); elementDimension.dispose();
-      countryDimension.filter(topCountries);
+      countryDimension.filter(function(d) { return topCountries.indexOf(d) != -1; });
 
       var data = valueDimension.top(Infinity);
       var dataCrossfilter = crossfilter(data);
@@ -64,10 +65,10 @@ queue()
         valueDimension: dataCrossfilter.dimension(function(d) { return d["Value"]; }),
         yearDimension: dataCrossfilter.dimension(function(d) { return d["Year"]; }),
         clearFilters: function() {
-          data.production.elementDimension.filter(null);
-          data.production.countryDimension.filter(null);
-          data.production.valueDimension.filter(null);
-          data.production.yearDimension.filter(null);
+          masterData.production.elementDimension.filter(null);
+          masterData.production.countryDimension.filter(null);
+          masterData.production.valueDimension.filter(null);
+          masterData.production.yearDimension.filter(null);
         }
       }
       countryDimension.dispose();
@@ -84,12 +85,12 @@ var sceneTransition = function(callback) {
     var count = 0;
     d3.selectAll("g")
       .transition()
+      .ease("cubic")
       .duration(config.transitionAnimationTime)
       .attr("transform", function(d) {
         var transformString = d3.select(this).attr("transform");
         var transformValue = transformString.substring(transformString.indexOf("(")+1, transformString.indexOf(","));
         transformValue = parseInt(transformValue) - innerWidth;
-        console.log(transformValue);
         return "translate("+transformValue+",0)";
       })
       .each("start", function() { ++count; })
@@ -101,3 +102,10 @@ var sceneTransition = function(callback) {
       });
   }, 1000);
 }
+
+
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+    this.parentNode.appendChild(this);
+  });
+};
