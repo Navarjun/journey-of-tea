@@ -122,7 +122,23 @@ function scene5step2() {
             .style("opacity", 0)
             .transition()
             .duration(config.transitionAnimationTime)
-            .style("opacity", 1);
+            .style("opacity", 1)
+            .each("end", function() {
+              scene5.scene5G.append("text")
+                .classed("nextButton", true)
+                .html("Next >")
+                .attr("y", innerHeight-config.margin.b)
+                .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
+                .style("opacity", 0)
+                .on("click", function() {
+                  setTimeout(setupScene6, 0);
+                  d3.select(this).remove();
+                })
+                .transition()
+                .duration(config.transitionAnimationTime)
+                .style("opacity", 1);
+            });
+
         })
     })
 }
