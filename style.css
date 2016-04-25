@@ -52,3 +52,15 @@ body {
   fill: #AAA;
   font-size: 1em;
 }
+
+.chinaExportPathG path {
+  fill: none;
+  stroke-width: 2px;
+  stroke: #AAA;
+}
+
+.USImportPathG path {
+  fill: none;
+  stroke-width: 2px;
+  stroke: #AAA;
+}

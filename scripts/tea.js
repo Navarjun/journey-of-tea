@@ -24,9 +24,19 @@ function parseProductionData(d) {
   };
 }
 
+function parseTradeData(d) {
+  return {
+    AreaName: d["AreaName"],
+    ElementName: d["ElementName"],
+    Year: new Date(+d["Year"], 0, 0),
+    Value: +d["Value"]
+  };
+}
+
 queue()
   .defer(d3.csv, "./data/tea-production.csv", parseProductionData)
-  .await(function(err, productionData) {
+  .defer(d3.csv, "./data/tea-trade.csv", parseTradeData)
+  .await(function(err, productionData, tradeData) {
     if (!err) {
       var crossfilterObj = crossfilter(productionData);
       var countryDimension = crossfilterObj.dimension(function(d) { return d["AreaName"]; });
@@ -70,7 +80,22 @@ queue()
           masterData.production.valueDimension.filter(null);
           masterData.production.yearDimension.filter(null);
         }
-      }
+      };
+      var tradeCrossfilter = crossfilter(tradeData);
+      masterData.trade = {
+        data: tradeData,
+        crossfilterObj: tradeCrossfilter,
+        elementDimension: tradeCrossfilter.dimension(function(d) { return d["ElementName"]; }),
+        countryDimension: tradeCrossfilter.dimension(function(d) { return d["AreaName"]; }),
+        valueDimension: tradeCrossfilter.dimension(function(d) { return d["Value"]; }),
+        yearDimension: tradeCrossfilter.dimension(function(d) { return d["Year"].getTime(); }),
+        clearFilters: function() {
+          masterData.trade.elementDimension.filter(null);
+          masterData.trade.countryDimension.filter(null);
+          masterData.trade.valueDimension.filter(null);
+          masterData.trade.yearDimension.filter(null);
+        }
+      };
       countryDimension.dispose();
       elementDimension.dispose();
       yearDimension.dispose();

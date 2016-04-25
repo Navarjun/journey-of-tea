@@ -38,7 +38,7 @@ function scene4step2() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay)
+    .duration(config.animationTimeDelay*5)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -48,7 +48,7 @@ function scene4step2() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay)
+        .duration(config.animationTimeDelay*5)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -61,7 +61,7 @@ function scene4step2() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay)
+            .duration(config.animationTimeDelay*5)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -71,7 +71,7 @@ function scene4step2() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay)
+                .duration(config.animationTimeDelay*5)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -84,7 +84,7 @@ function scene4step2() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay)
+                    .duration(config.animationTimeDelay*5)
                     .style("opacity", 1)
                     .each("end", function() {
                       whiteteaProcessG.append("text")
@@ -93,7 +93,7 @@ function scene4step2() {
                         .html("Sorting")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay)
+                        .duration(config.animationTimeDelay*5)
                         .style("opacity", 1)
                         .each("end", function(){
                           setTimeout(scene4step3, config.animationTime);
@@ -118,7 +118,7 @@ function scene4step3() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay)
+    .duration(config.animationTimeDelay*5)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -128,7 +128,7 @@ function scene4step3() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay)
+        .duration(config.animationTimeDelay*5)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -141,7 +141,7 @@ function scene4step3() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay)
+            .duration(config.animationTimeDelay*5)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -151,7 +151,7 @@ function scene4step3() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay)
+                .duration(config.animationTimeDelay*5)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -164,7 +164,7 @@ function scene4step3() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay)
+                    .duration(config.animationTimeDelay*5)
                     .style("opacity", 1)
                     .each("end", function() {
                       // add nextlabel
@@ -174,7 +174,7 @@ function scene4step3() {
                         .html("Heating")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay)
+                        .duration(config.animationTimeDelay*5)
                         .style("opacity", 1)
                         .each("end", function(){
                           // add next rect
@@ -187,7 +187,7 @@ function scene4step3() {
                             .attr("height", 50)
                             .style("opacity", 0)
                             .transition()
-                            .duration(config.animationTimeDelay)
+                            .duration(config.animationTimeDelay*5)
                             .style("opacity", 1)
                             .each("end", function() {
                               // add nextlabel
@@ -197,7 +197,7 @@ function scene4step3() {
                                 .html("Oxidation")
                                 .style("opacity", 0)
                                 .transition()
-                                .duration(config.animationTimeDelay)
+                                .duration(config.animationTimeDelay*5)
                                 .style("opacity", 1)
                                 .each("end", function(){
                                   // add next rect
@@ -210,7 +210,7 @@ function scene4step3() {
                                     .attr("height", 50)
                                     .style("opacity", 0)
                                     .transition()
-                                    .duration(config.animationTimeDelay)
+                                    .duration(config.animationTimeDelay*5)
                                     .style("opacity", 1)
                                     .each("end", function() {
                                       // add nextlabel
@@ -220,7 +220,7 @@ function scene4step3() {
                                         .html("Drying")
                                         .style("opacity", 0)
                                         .transition()
-                                        .duration(config.animationTimeDelay)
+                                        .duration(config.animationTimeDelay*5)
                                         .style("opacity", 1)
                                         .each("end", function(){
                                           setTimeout(scene4step4, config.animationTime);
@@ -249,7 +249,7 @@ function scene4step4() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay)
+    .duration(config.animationTimeDelay*5)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -259,7 +259,7 @@ function scene4step4() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay)
+        .duration(config.animationTimeDelay*5)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -272,7 +272,7 @@ function scene4step4() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay)
+            .duration(config.animationTimeDelay*5)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -282,7 +282,7 @@ function scene4step4() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay)
+                .duration(config.animationTimeDelay*5)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -295,7 +295,7 @@ function scene4step4() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay)
+                    .duration(config.animationTimeDelay*5)
                     .style("opacity", 1)
                     .each("end", function() {
                       // add nextlabel
@@ -305,7 +305,7 @@ function scene4step4() {
                         .html("Heating")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay)
+                        .duration(config.animationTimeDelay*5)
                         .style("opacity", 1)
                         .each("end", function(){
                           // add next rect
@@ -318,7 +318,7 @@ function scene4step4() {
                             .attr("height", 50)
                             .style("opacity", 0)
                             .transition()
-                            .duration(config.animationTimeDelay)
+                            .duration(config.animationTimeDelay*5)
                             .style("opacity", 1)
                             .each("end", function() {
                               // add nextlabel
@@ -328,7 +328,7 @@ function scene4step4() {
                                 .html("Rolling")
                                 .style("opacity", 0)
                                 .transition()
-                                .duration(config.animationTimeDelay)
+                                .duration(config.animationTimeDelay*5)
                                 .style("opacity", 1)
                                 .each("end", function(){
                                   // add next rect
@@ -341,7 +341,7 @@ function scene4step4() {
                                     .attr("height", 50)
                                     .style("opacity", 0)
                                     .transition()
-                                    .duration(config.animationTimeDelay)
+                                    .duration(config.animationTimeDelay*5)
                                     .style("opacity", 1)
                                     .each("end", function() {
                                       // add nextlabel
@@ -351,7 +351,7 @@ function scene4step4() {
                                         .html("Drying")
                                         .style("opacity", 0)
                                         .transition()
-                                        .duration(config.animationTimeDelay)
+                                        .duration(config.animationTimeDelay*5)
                                         .style("opacity", 1)
                                         .each("end", function(){
                                           // add next rect
@@ -364,7 +364,7 @@ function scene4step4() {
                                             .attr("height", 50)
                                             .style("opacity", 0)
                                             .transition()
-                                            .duration(config.animationTimeDelay)
+                                            .duration(config.animationTimeDelay*5)
                                             .style("opacity", 1)
                                             .each("end", function() {
                                               // add nextlabel
@@ -374,7 +374,7 @@ function scene4step4() {
                                                 .html("Sifting")
                                                 .style("opacity", 0)
                                                 .transition()
-                                                .duration(config.animationTimeDelay)
+                                                .duration(config.animationTimeDelay*5)
                                                 .style("opacity", 1)
                                                 .each("end", function(){
                                                   setTimeout(scene4step5, config.animationTime);
@@ -405,7 +405,7 @@ function scene4step5() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay)
+    .duration(config.animationTimeDelay*5)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -415,7 +415,7 @@ function scene4step5() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay)
+        .duration(config.animationTimeDelay*5)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -428,7 +428,7 @@ function scene4step5() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay)
+            .duration(config.animationTimeDelay*5)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -438,7 +438,7 @@ function scene4step5() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay)
+                .duration(config.animationTimeDelay*5)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -451,7 +451,7 @@ function scene4step5() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay)
+                    .duration(config.animationTimeDelay*5)
                     .style("opacity", 1)
                     .each("end", function() {
                       // add nextlabel
@@ -461,7 +461,7 @@ function scene4step5() {
                         .html("Oxidation")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay)
+                        .duration(config.animationTimeDelay*5)
                         .style("opacity", 1)
                         .each("end", function(){
                           // add next rect
@@ -474,7 +474,7 @@ function scene4step5() {
                             .attr("height", 50)
                             .style("opacity", 0)
                             .transition()
-                            .duration(config.animationTimeDelay)
+                            .duration(config.animationTimeDelay*5)
                             .style("opacity", 1)
                             .each("end", function() {
                               // add nextlabel
@@ -484,7 +484,7 @@ function scene4step5() {
                                 .html("Heating")
                                 .style("opacity", 0)
                                 .transition()
-                                .duration(config.animationTimeDelay)
+                                .duration(config.animationTimeDelay*5)
                                 .style("opacity", 1)
                                 .each("end", function(){
                                   // add next rect
@@ -497,7 +497,7 @@ function scene4step5() {
                                     .attr("height", 50)
                                     .style("opacity", 0)
                                     .transition()
-                                    .duration(config.animationTimeDelay)
+                                    .duration(config.animationTimeDelay*5)
                                     .style("opacity", 1)
                                     .each("end", function() {
                                       // add nextlabel
@@ -507,7 +507,7 @@ function scene4step5() {
                                         .html("Rolling")
                                         .style("opacity", 0)
                                         .transition()
-                                        .duration(config.animationTimeDelay)
+                                        .duration(config.animationTimeDelay*5)
                                         .style("opacity", 1)
                                         .each("end", function(){
                                           // add next rect
@@ -520,7 +520,7 @@ function scene4step5() {
                                             .attr("height", 50)
                                             .style("opacity", 0)
                                             .transition()
-                                            .duration(config.animationTimeDelay)
+                                            .duration(config.animationTimeDelay*5)
                                             .style("opacity", 1)
                                             .each("end", function() {
                                               // add nextlabel
@@ -530,7 +530,7 @@ function scene4step5() {
                                                 .html("Drying")
                                                 .style("opacity", 0)
                                                 .transition()
-                                                .duration(config.animationTimeDelay)
+                                                .duration(config.animationTimeDelay*5)
                                                 .style("opacity", 1)
                                                 .each("end", function(){
                                                   setTimeout(scene4step6, config.animationTime);
@@ -561,7 +561,7 @@ function scene4step6() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay)
+    .duration(config.animationTimeDelay*5)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -571,7 +571,7 @@ function scene4step6() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay)
+        .duration(config.animationTimeDelay*5)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -584,7 +584,7 @@ function scene4step6() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay)
+            .duration(config.animationTimeDelay*5)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -594,7 +594,7 @@ function scene4step6() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay)
+                .duration(config.animationTimeDelay*5)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -607,7 +607,7 @@ function scene4step6() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay)
+                    .duration(config.animationTimeDelay*5)
                     .style("opacity", 1)
                     .each("end", function() {
                       // add nextlabel
@@ -617,7 +617,7 @@ function scene4step6() {
                         .html("Rolling")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay)
+                        .duration(config.animationTimeDelay*5)
                         .style("opacity", 1)
                         .each("end", function(){
                           // add next rect
@@ -630,7 +630,7 @@ function scene4step6() {
                             .attr("height", 50)
                             .style("opacity", 0)
                             .transition()
-                            .duration(config.animationTimeDelay)
+                            .duration(config.animationTimeDelay*5)
                             .style("opacity", 1)
                             .each("end", function() {
                               // add nextlabel
@@ -640,7 +640,7 @@ function scene4step6() {
                                 .html("Oxidation")
                                 .style("opacity", 0)
                                 .transition()
-                                .duration(config.animationTimeDelay)
+                                .duration(config.animationTimeDelay*5)
                                 .style("opacity", 1)
                                 .each("end", function(){
                                   // add next rect
@@ -653,7 +653,7 @@ function scene4step6() {
                                     .attr("height", 50)
                                     .style("opacity", 0)
                                     .transition()
-                                    .duration(config.animationTimeDelay)
+                                    .duration(config.animationTimeDelay*5)
                                     .style("opacity", 1)
                                     .each("end", function() {
                                       // add nextlabel
@@ -663,7 +663,7 @@ function scene4step6() {
                                         .html("Drying")
                                         .style("opacity", 0)
                                         .transition()
-                                        .duration(config.animationTimeDelay)
+                                        .duration(config.animationTimeDelay*5)
                                         .style("opacity", 1)
                                         .each("end", function(){
                                           // add next rect
@@ -676,7 +676,7 @@ function scene4step6() {
                                             .attr("height", 50)
                                             .style("opacity", 0)
                                             .transition()
-                                            .duration(config.animationTimeDelay)
+                                            .duration(config.animationTimeDelay*5)
                                             .style("opacity", 1)
                                             .each("end", function() {
                                               // add nextlabel
@@ -686,10 +686,10 @@ function scene4step6() {
                                                 .html("Sorting")
                                                 .style("opacity", 0)
                                                 .transition()
-                                                .duration(config.animationTimeDelay)
+                                                .duration(config.animationTimeDelay*5)
                                                 .style("opacity", 1)
                                                 .each("end", function(){
-                                                  // setTimeout(scene4step4, config.animationTime);
+                                                  setTimeout(setupScene5, config.animationTime);
                                                 })
                                             });
                                         })
