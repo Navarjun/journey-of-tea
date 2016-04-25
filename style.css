@@ -29,7 +29,7 @@ body {
 }
 
 .yAxisMainLabel {
-  fill: #AAA;
+  fill: #444;
 }
 
 .factsG text {
@@ -44,12 +44,10 @@ body {
 
 .processRect {
   fill: none;
-  stroke: #AAA;
-  stroke-weight: 1px;
 }
 
 .processGroup text {
-  fill: #AAA;
+  fill: #444;
   font-size: 1em;
 }
 
@@ -63,4 +61,61 @@ body {
   fill: none;
   stroke-width: 2px;
   stroke: #AAA;
+}
+
+.nextButton {
+  fill: #AAA;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.x-axis path {
+  fill: none;
+  stroke-width: 1px;
+  stroke: #444;
+}
+.y-axis path {
+  fill: none;
+  stroke-width: 1px;
+  stroke: #444;
+}
+.x-axis text {
+  fill: #444;
+  font-size: 0.8em;
+}
+.y-axis text {
+  fill: #444;
+  font-size: 0.8em;
+}
+
+.pickingRect {
+  fill: #b5cf6b;
+}
+
+.witheringRect {
+  fill: #aec7e8;
+}
+
+.heatingRect {
+  fill: #e7969c;
+}
+
+.oxidationRect {
+  fill: #ffbb78;
+}
+
+.dryingRect {
+  fill: #e7ba52;
+}
+
+.sortingRect {
+  fill: #9e9ac8;
+}
+
+.chinaExportPathG path {
+  stroke: rgb(44, 160, 44);
+}
+
+.USImportPathG path {
+  stroke: rgb(49, 130, 189);
 }

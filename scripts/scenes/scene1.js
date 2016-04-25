@@ -9,7 +9,7 @@ function scene1() {
     .attr("x", "-10000px")
     .attr("y", "-10000px")
     .html("Journey of Tea")
-    .attr("style", "font-size: 3em;")
+    .attr("style", "font-size: 3em; font-weight:900;")
   var placeholderWidth = placeholder.node().getBBox().width;
   var placeholderHeight = placeholder.node().getBBox().height;
 
@@ -28,7 +28,7 @@ function scene1() {
     .each("end", function() {
       scene1G.append("text")
         .classed("projectTagLine", true)
-        .html("adventurous journey of tea to reach you")
+        .html("from plantations to the stores")
         .attr("x", function(d) { return innerWidth/2-d3.select(this).node().getBBox().width/2; })
         .attr("y", function(d) { return innerHeight/2+placeholderHeight/2; })
         .style("opacity", 0)
@@ -36,7 +36,18 @@ function scene1() {
         .duration(config.animationTime)
         .style("opacity", 1)
         .each("end", function() {
-          setupScene2();
+          scene1G.append("text")
+            .classed("nextButton", true)
+            .html("Next >")
+            .attr("y", innerHeight-config.margin.b)
+            .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
+            .style("opacity", 0)
+            .on("click", function() {
+              setTimeout(setupScene2, 0);
+            })
+            .transition()
+            .duration(config.transitionAnimationTime)
+            .style("opacity", 1)
         })
     });
 }

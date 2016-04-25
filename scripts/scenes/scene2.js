@@ -11,9 +11,12 @@ function scene2() {
   scene2.yAxisLabel = scene2G.append("g")
     .classed("yAxisMainLabel", true)
     .style("opacity", 0)
-    .attr("transform", "translate("+(config.chartFrame.l-50)+", "+(config.chartFrame.height+config.chartFrame.t)+") rotate(-90)")
-    .append("text")
-    .html("Production")
+    .attr("transform", "translate("+(config.chartFrame.l-50)+", "+(config.chartFrame.height+config.chartFrame.t)+") rotate(-90)");
+  scene2.yAxisLabel.append("text")
+    .html("Production(tonnes)");
+  scene2.yAxisLabel.transition()
+    .duration(config.transitionAnimationTime)
+    .style("opacity", 1);
   var topCountry = prodData.valueDimension.top(1)[0];
   // prodData.clearFilters();
 
@@ -23,11 +26,17 @@ function scene2() {
 
   scene2.scaleY = d3.scale.linear()
     .domain([0, topCountry["Value"]+topCountry["Value"]*0.1])
-    .range([config.chartFrame.height+config.chartFrame.t, config.chartFrame.t], 2);
+    .range([config.chartFrame.height+config.chartFrame.t-5, config.chartFrame.t], 2);
 
   scene2.axisX = d3.svg.axis()
     .scale(scene2.scaleX)
-    .orient("bottom");
+    .orient("bottom")
+    .tickFormat(function(d) {
+      if (d == "United Republic of Tanzania") return "Tanzania";
+      if (d == "Iran (Islamic Republic of)") return "Iran";
+      if (d == "Viet Nam") return "Vietnam";
+      return d;
+    });
   scene2.axisY = d3.svg.axis()
     .scale(scene2.scaleY)
     .orient("left")
@@ -35,20 +44,30 @@ function scene2() {
       return d/1000000 + "M";
     });
 
+
   scene2.xAxis = scene2G.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + (config.chartFrame.t+config.chartFrame.height) + ")")
+    .attr("class", "x-axis")
+    .attr("transform", "translate(0," + (config.chartFrame.t+config.chartFrame.height-5) + ")")
+    .style("opacity", 0)
     .call(scene2.axisX)
-    .selectAll("text")
+    .transition()
+    .duration(config.transitionAnimationTime)
+    .style("opacity", 1);
+
+  scene2.xAxis.selectAll("text")
     .attr("y", 0)
     .attr("x", 9)
     .attr("dy", ".35em")
     .attr("transform", "rotate(90)")
     .style("text-anchor", "start");;
   scene2.yAxis = scene2G.append("g")
-    .attr("class", "y axis")
+    .attr("class", "y-axis")
     .attr("transform", "translate(" + (config.chartFrame.l) + ",0)")
-    .call(scene2.axisY);
+    .style("opacity", 0)
+    .call(scene2.axisY)
+    .transition()
+    .duration(config.transitionAnimationTime)
+    .style("opacity", 1);
 
   scene2.barchartG = scene2G.append("g")
     .classed("barchart", true);
@@ -58,33 +77,42 @@ function scene2() {
     .append("rect")
     .style("fill", "rgb(183, 93, 93)")
     .attr("class", function(d) { return d["AreaName"].toLowerCase().replace(" ", ""); })
-    .attr("x", function(d) { return scene2.scaleX(d["AreaName"]); })
-    .attr("y", function(d) { return scene2.scaleY(d["Value"]); })
-    .attr("width", "5px")
+    .attr("x", function(d) { return scene2.scaleX(d["AreaName"])-7; })
+    .attr("y", function(d) { return config.chartFrame.height+config.chartFrame.t-5; })
+    .attr("width", "15px")
     .attr("height",0);
   var transitionCount = 0;
   scene2.barchartG.selectAll("rect")
     .transition()
     .delay(function(_, i) { return i*config.animationTimeDelay; })
     .attr("class", function(d) { return d["AreaName"].toLowerCase().replace(" ", ""); })
-    .attr("x", function(d) { return scene2.scaleX(d["AreaName"]); })
     .attr("y", function(d) { return scene2.scaleY(d["Value"]); })
-    .attr("width", "5px")
-    .attr("height", function(d) { return config.chartFrame.t+config.chartFrame.height - scene2.scaleY(d["Value"]); })
+    .attr("height", function(d) { return config.chartFrame.t+config.chartFrame.height-5 - scene2.scaleY(d["Value"]); })
     .each("start", function() {
       transitionCount++;
     })
     .each("end", function() {
       transitionCount--;
       if (transitionCount == 0) {
-        setTimeout(scene2_step2, config.transitionAnimationTime);
+        scene2G.append("text")
+          .classed("nextButton", true)
+          .html("Next >")
+          .attr("y", innerHeight-config.margin.b)
+          .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
+          .style("opacity", 0)
+          .on("click", function() {
+            setTimeout(scene2step2, 0);
+          })
+          .transition()
+          .duration(config.transitionAnimationTime)
+          .style("opacity", 1);
       }
     })
 
   prodData.clearFilters();
 };
 
-function scene2_step2() {
+function scene2step2() {
   var scene2G = scene2.scene2G;
 
   scene2.barchartG.select("rect.china").moveToFront();

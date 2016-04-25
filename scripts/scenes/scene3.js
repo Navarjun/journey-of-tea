@@ -31,7 +31,18 @@ function scene3() {
     .each("end", function() {
       transitionCount--;
       if (transitionCount == 0) {
-        setTimeout(setupScene4, config.animationTime*3);
+        scene3G.append("text")
+          .classed("nextButton", true)
+          .html("Next >")
+          .attr("y", innerHeight-config.margin.b)
+          .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
+          .style("opacity", 0)
+          .on("click", function() {
+            setTimeout(setupScene4, 0);
+          })
+          .transition()
+          .duration(config.transitionAnimationTime)
+          .style("opacity", 1);
       }
     })
 

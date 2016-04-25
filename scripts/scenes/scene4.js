@@ -38,7 +38,7 @@ function scene4step2() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay*5)
+    .duration(config.animationTimeDelay)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -48,7 +48,7 @@ function scene4step2() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay*5)
+        .duration(config.animationTimeDelay)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -61,7 +61,7 @@ function scene4step2() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay*5)
+            .duration(config.animationTimeDelay)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -71,7 +71,7 @@ function scene4step2() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay*5)
+                .duration(config.animationTimeDelay)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -84,7 +84,7 @@ function scene4step2() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay*5)
+                    .duration(config.animationTimeDelay)
                     .style("opacity", 1)
                     .each("end", function() {
                       whiteteaProcessG.append("text")
@@ -93,10 +93,22 @@ function scene4step2() {
                         .html("Sorting")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay*5)
+                        .duration(config.animationTimeDelay)
                         .style("opacity", 1)
                         .each("end", function(){
-                          setTimeout(scene4step3, config.animationTime);
+                          scene4.scene4G.append("text")
+                            .classed("nextButton", true)
+                            .html("Next >")
+                            .attr("y", innerHeight-config.margin.b)
+                            .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
+                            .style("opacity", 0)
+                            .on("click", function() {
+                              setTimeout(scene4step3, 0);
+                              d3.select(this).remove();
+                            })
+                            .transition()
+                            .duration(config.transitionAnimationTime)
+                            .style("opacity", 1);
                         })
                     });
                 });
@@ -118,7 +130,7 @@ function scene4step3() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay*5)
+    .duration(config.animationTimeDelay)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -128,7 +140,7 @@ function scene4step3() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay*5)
+        .duration(config.animationTimeDelay)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -141,7 +153,7 @@ function scene4step3() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay*5)
+            .duration(config.animationTimeDelay)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -151,7 +163,7 @@ function scene4step3() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay*5)
+                .duration(config.animationTimeDelay)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -164,7 +176,7 @@ function scene4step3() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay*5)
+                    .duration(config.animationTimeDelay)
                     .style("opacity", 1)
                     .each("end", function() {
                       // add nextlabel
@@ -174,7 +186,7 @@ function scene4step3() {
                         .html("Heating")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay*5)
+                        .duration(config.animationTimeDelay)
                         .style("opacity", 1)
                         .each("end", function(){
                           // add next rect
@@ -187,7 +199,7 @@ function scene4step3() {
                             .attr("height", 50)
                             .style("opacity", 0)
                             .transition()
-                            .duration(config.animationTimeDelay*5)
+                            .duration(config.animationTimeDelay)
                             .style("opacity", 1)
                             .each("end", function() {
                               // add nextlabel
@@ -197,7 +209,7 @@ function scene4step3() {
                                 .html("Oxidation")
                                 .style("opacity", 0)
                                 .transition()
-                                .duration(config.animationTimeDelay*5)
+                                .duration(config.animationTimeDelay)
                                 .style("opacity", 1)
                                 .each("end", function(){
                                   // add next rect
@@ -210,7 +222,7 @@ function scene4step3() {
                                     .attr("height", 50)
                                     .style("opacity", 0)
                                     .transition()
-                                    .duration(config.animationTimeDelay*5)
+                                    .duration(config.animationTimeDelay)
                                     .style("opacity", 1)
                                     .each("end", function() {
                                       // add nextlabel
@@ -220,10 +232,46 @@ function scene4step3() {
                                         .html("Drying")
                                         .style("opacity", 0)
                                         .transition()
-                                        .duration(config.animationTimeDelay*5)
+                                        .duration(config.animationTimeDelay)
                                         .style("opacity", 1)
                                         .each("end", function(){
-                                          setTimeout(scene4step4, config.animationTime);
+                                          yellowteaProcessG.append("rect")
+                                            .classed("processRect", true)
+                                            .classed("sortingRect", true)
+                                            .attr("x", 110+(scene4.processRectWidth+10)*4)
+                                            .attr("y", 0)
+                                            .attr("width", scene4.processRectWidth)
+                                            .attr("height", 50)
+                                            .style("opacity", 0)
+                                            .transition()
+                                            .duration(config.animationTimeDelay)
+                                            .style("opacity", 1)
+                                            .each("end", function() {
+                                              // add nextlabel
+                                              yellowteaProcessG.append("text")
+                                                .attr("x", 110+(scene4.processRectWidth+10)*4+10)
+                                                .attr("y", 20)
+                                                .html("Sorting")
+                                                .style("opacity", 0)
+                                                .transition()
+                                                .duration(config.animationTimeDelay)
+                                                .style("opacity", 1)
+                                                .each("end", function(){
+                                                  scene4.scene4G.append("text")
+                                                    .classed("nextButton", true)
+                                                    .html("Next >")
+                                                    .attr("y", innerHeight-config.margin.b)
+                                                    .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
+                                                    .style("opacity", 0)
+                                                    .on("click", function() {
+                                                      setTimeout(scene4step4, 0);
+                                                      d3.select(this).remove();
+                                                    })
+                                                    .transition()
+                                                    .duration(config.transitionAnimationTime)
+                                                    .style("opacity", 1);
+                                                })
+                                            });
                                         })
                                     });
                                 })
@@ -249,7 +297,7 @@ function scene4step4() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay*5)
+    .duration(config.animationTimeDelay)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -259,7 +307,7 @@ function scene4step4() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay*5)
+        .duration(config.animationTimeDelay)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -272,7 +320,7 @@ function scene4step4() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay*5)
+            .duration(config.animationTimeDelay)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -282,7 +330,7 @@ function scene4step4() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay*5)
+                .duration(config.animationTimeDelay)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -295,7 +343,7 @@ function scene4step4() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay*5)
+                    .duration(config.animationTimeDelay)
                     .style("opacity", 1)
                     .each("end", function() {
                       // add nextlabel
@@ -305,7 +353,7 @@ function scene4step4() {
                         .html("Heating")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay*5)
+                        .duration(config.animationTimeDelay)
                         .style("opacity", 1)
                         .each("end", function(){
                           // add next rect
@@ -318,7 +366,7 @@ function scene4step4() {
                             .attr("height", 50)
                             .style("opacity", 0)
                             .transition()
-                            .duration(config.animationTimeDelay*5)
+                            .duration(config.animationTimeDelay)
                             .style("opacity", 1)
                             .each("end", function() {
                               // add nextlabel
@@ -328,7 +376,7 @@ function scene4step4() {
                                 .html("Rolling")
                                 .style("opacity", 0)
                                 .transition()
-                                .duration(config.animationTimeDelay*5)
+                                .duration(config.animationTimeDelay)
                                 .style("opacity", 1)
                                 .each("end", function(){
                                   // add next rect
@@ -341,7 +389,7 @@ function scene4step4() {
                                     .attr("height", 50)
                                     .style("opacity", 0)
                                     .transition()
-                                    .duration(config.animationTimeDelay*5)
+                                    .duration(config.animationTimeDelay)
                                     .style("opacity", 1)
                                     .each("end", function() {
                                       // add nextlabel
@@ -351,7 +399,7 @@ function scene4step4() {
                                         .html("Drying")
                                         .style("opacity", 0)
                                         .transition()
-                                        .duration(config.animationTimeDelay*5)
+                                        .duration(config.animationTimeDelay)
                                         .style("opacity", 1)
                                         .each("end", function(){
                                           // add next rect
@@ -364,7 +412,7 @@ function scene4step4() {
                                             .attr("height", 50)
                                             .style("opacity", 0)
                                             .transition()
-                                            .duration(config.animationTimeDelay*5)
+                                            .duration(config.animationTimeDelay)
                                             .style("opacity", 1)
                                             .each("end", function() {
                                               // add nextlabel
@@ -374,10 +422,22 @@ function scene4step4() {
                                                 .html("Sifting")
                                                 .style("opacity", 0)
                                                 .transition()
-                                                .duration(config.animationTimeDelay*5)
+                                                .duration(config.animationTimeDelay)
                                                 .style("opacity", 1)
                                                 .each("end", function(){
-                                                  setTimeout(scene4step5, config.animationTime);
+                                                  scene4.scene4G.append("text")
+                                                    .classed("nextButton", true)
+                                                    .html("Next >")
+                                                    .attr("y", innerHeight-config.margin.b)
+                                                    .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
+                                                    .style("opacity", 0)
+                                                    .on("click", function() {
+                                                      setTimeout(scene4step5, 0);
+                                                      d3.select(this).remove();
+                                                    })
+                                                    .transition()
+                                                    .duration(config.transitionAnimationTime)
+                                                    .style("opacity", 1);
                                                 })
                                             });
                                         })
@@ -405,7 +465,7 @@ function scene4step5() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay*5)
+    .duration(config.animationTimeDelay)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -415,7 +475,7 @@ function scene4step5() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay*5)
+        .duration(config.animationTimeDelay)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -428,7 +488,7 @@ function scene4step5() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay*5)
+            .duration(config.animationTimeDelay)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -438,7 +498,7 @@ function scene4step5() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay*5)
+                .duration(config.animationTimeDelay)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -451,7 +511,7 @@ function scene4step5() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay*5)
+                    .duration(config.animationTimeDelay)
                     .style("opacity", 1)
                     .each("end", function() {
                       // add nextlabel
@@ -461,7 +521,7 @@ function scene4step5() {
                         .html("Oxidation")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay*5)
+                        .duration(config.animationTimeDelay)
                         .style("opacity", 1)
                         .each("end", function(){
                           // add next rect
@@ -474,7 +534,7 @@ function scene4step5() {
                             .attr("height", 50)
                             .style("opacity", 0)
                             .transition()
-                            .duration(config.animationTimeDelay*5)
+                            .duration(config.animationTimeDelay)
                             .style("opacity", 1)
                             .each("end", function() {
                               // add nextlabel
@@ -484,58 +544,46 @@ function scene4step5() {
                                 .html("Heating")
                                 .style("opacity", 0)
                                 .transition()
-                                .duration(config.animationTimeDelay*5)
+                                .duration(config.animationTimeDelay)
                                 .style("opacity", 1)
                                 .each("end", function(){
                                   // add next rect
                                   oolongteaProcessG.append("rect")
                                     .classed("processRect", true)
-                                    .classed("sortingRect", true)
+                                    .classed("dryingRect", true)
                                     .attr("x", 110+(scene4.processRectWidth+10)*3)
                                     .attr("y", 0)
                                     .attr("width", scene4.processRectWidth)
                                     .attr("height", 50)
                                     .style("opacity", 0)
                                     .transition()
-                                    .duration(config.animationTimeDelay*5)
+                                    .duration(config.animationTimeDelay)
                                     .style("opacity", 1)
                                     .each("end", function() {
                                       // add nextlabel
                                       oolongteaProcessG.append("text")
                                         .attr("x", 110+(scene4.processRectWidth+10)*3+10)
                                         .attr("y", 20)
-                                        .html("Rolling")
+                                        .html("Drying")
                                         .style("opacity", 0)
                                         .transition()
-                                        .duration(config.animationTimeDelay*5)
+                                        .duration(config.animationTimeDelay)
                                         .style("opacity", 1)
                                         .each("end", function(){
                                           // add next rect
-                                          oolongteaProcessG.append("rect")
-                                            .classed("processRect", true)
-                                            .classed("sortingRect", true)
-                                            .attr("x", 110+(scene4.processRectWidth+10)*4)
-                                            .attr("y", 0)
-                                            .attr("width", scene4.processRectWidth)
-                                            .attr("height", 50)
+                                          scene4.scene4G.append("text")
+                                            .classed("nextButton", true)
+                                            .html("Next >")
+                                            .attr("y", innerHeight-config.margin.b)
+                                            .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
                                             .style("opacity", 0)
+                                            .on("click", function() {
+                                              setTimeout(scene4step6, 0);
+                                              d3.select(this).remove();
+                                            })
                                             .transition()
-                                            .duration(config.animationTimeDelay*5)
-                                            .style("opacity", 1)
-                                            .each("end", function() {
-                                              // add nextlabel
-                                              oolongteaProcessG.append("text")
-                                                .attr("x", 110+(scene4.processRectWidth+10)*4+10)
-                                                .attr("y", 20)
-                                                .html("Drying")
-                                                .style("opacity", 0)
-                                                .transition()
-                                                .duration(config.animationTimeDelay*5)
-                                                .style("opacity", 1)
-                                                .each("end", function(){
-                                                  setTimeout(scene4step6, config.animationTime);
-                                                })
-                                            });
+                                            .duration(config.transitionAnimationTime)
+                                            .style("opacity", 1);
                                         })
                                     });
                                 })
@@ -561,7 +609,7 @@ function scene4step6() {
     .attr("height", 50)
     .style("opacity", 0)
     .transition()
-    .duration(config.animationTimeDelay*5)
+    .duration(config.animationTimeDelay)
     .style("opacity", 1)
     .each("end", function() {
       // adding picking label
@@ -571,7 +619,7 @@ function scene4step6() {
         .html("Picking")
         .style("opacity", 0)
         .transition()
-        .duration(config.animationTimeDelay*5)
+        .duration(config.animationTimeDelay)
         .style("opacity", 1)
         .each("end", function() {
           // add next rect
@@ -584,7 +632,7 @@ function scene4step6() {
             .attr("height", 50)
             .style("opacity", 0)
             .transition()
-            .duration(config.animationTimeDelay*5)
+            .duration(config.animationTimeDelay)
             .style("opacity", 1)
             .each("end", function() {
               // add next label
@@ -594,7 +642,7 @@ function scene4step6() {
                 .html("Withering")
                 .style("opacity", 0)
                 .transition()
-                .duration(config.animationTimeDelay*5)
+                .duration(config.animationTimeDelay)
                 .style("opacity", 1)
                 .each("end", function() {
                   // add next rect
@@ -607,40 +655,40 @@ function scene4step6() {
                     .attr("height", 50)
                     .style("opacity", 0)
                     .transition()
-                    .duration(config.animationTimeDelay*5)
+                    .duration(config.animationTimeDelay)
                     .style("opacity", 1)
                     .each("end", function() {
                       // add nextlabel
                       blackteaProcessG.append("text")
                         .attr("x", 110+scene4.processRectWidth+20)
                         .attr("y", 20)
-                        .html("Rolling")
+                        .html("Oxidation")
                         .style("opacity", 0)
                         .transition()
-                        .duration(config.animationTimeDelay*5)
+                        .duration(config.animationTimeDelay)
                         .style("opacity", 1)
                         .each("end", function(){
                           // add next rect
                           blackteaProcessG.append("rect")
                             .classed("processRect", true)
-                            .classed("oxidationRect", true)
+                            .classed("dryingRect", true)
                             .attr("x", 110+(scene4.processRectWidth+10)*2)
                             .attr("y", 0)
                             .attr("width", scene4.processRectWidth)
                             .attr("height", 50)
                             .style("opacity", 0)
                             .transition()
-                            .duration(config.animationTimeDelay*5)
+                            .duration(config.animationTimeDelay)
                             .style("opacity", 1)
                             .each("end", function() {
                               // add nextlabel
                               blackteaProcessG.append("text")
                                 .attr("x", 110+(scene4.processRectWidth+10)*2+10)
                                 .attr("y", 20)
-                                .html("Oxidation")
+                                .html("Drying")
                                 .style("opacity", 0)
                                 .transition()
-                                .duration(config.animationTimeDelay*5)
+                                .duration(config.animationTimeDelay)
                                 .style("opacity", 1)
                                 .each("end", function(){
                                   // add next rect
@@ -653,45 +701,33 @@ function scene4step6() {
                                     .attr("height", 50)
                                     .style("opacity", 0)
                                     .transition()
-                                    .duration(config.animationTimeDelay*5)
+                                    .duration(config.animationTimeDelay)
                                     .style("opacity", 1)
                                     .each("end", function() {
                                       // add nextlabel
                                       blackteaProcessG.append("text")
                                         .attr("x", 110+(scene4.processRectWidth+10)*3+10)
                                         .attr("y", 20)
-                                        .html("Drying")
+                                        .html("Sorting")
                                         .style("opacity", 0)
                                         .transition()
-                                        .duration(config.animationTimeDelay*5)
+                                        .duration(config.animationTimeDelay)
                                         .style("opacity", 1)
                                         .each("end", function(){
                                           // add next rect
-                                          blackteaProcessG.append("rect")
-                                            .classed("processRect", true)
-                                            .classed("sortingRect", true)
-                                            .attr("x", 110+(scene4.processRectWidth+10)*4)
-                                            .attr("y", 0)
-                                            .attr("width", scene4.processRectWidth)
-                                            .attr("height", 50)
+                                          scene4.scene4G.append("text")
+                                            .classed("nextButton", true)
+                                            .html("Next >")
+                                            .attr("y", innerHeight-config.margin.b)
+                                            .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
                                             .style("opacity", 0)
+                                            .on("click", function() {
+                                              setTimeout(setupScene5, 0);
+                                              d3.select(this).remove();
+                                            })
                                             .transition()
-                                            .duration(config.animationTimeDelay*5)
-                                            .style("opacity", 1)
-                                            .each("end", function() {
-                                              // add nextlabel
-                                              blackteaProcessG.append("text")
-                                                .attr("x", 110+(scene4.processRectWidth+10)*4+10)
-                                                .attr("y", 20)
-                                                .html("Sorting")
-                                                .style("opacity", 0)
-                                                .transition()
-                                                .duration(config.animationTimeDelay*5)
-                                                .style("opacity", 1)
-                                                .each("end", function(){
-                                                  setTimeout(setupScene5, config.animationTime);
-                                                })
-                                            });
+                                            .duration(config.transitionAnimationTime)
+                                            .style("opacity", 1);
                                         })
                                     });
                                 })

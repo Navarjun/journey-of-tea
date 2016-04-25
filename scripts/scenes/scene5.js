@@ -13,10 +13,13 @@ function scene5() {
 
   scene5.yAxisLabel = scene5G.append("g")
     .classed("yAxisMainLabel", true)
-    // .style("opacity", 0)
-    .attr("transform", "translate("+(config.chartFrame.l-50)+", "+(config.chartFrame.height+config.chartFrame.t)+") rotate(-90)")
-    .append("text")
-    .html("Quantity(tonnes)")
+    .style("opacity", 0)
+    .attr("transform", "translate("+(config.chartFrame.l-50)+", "+(config.chartFrame.height+config.chartFrame.t)+") rotate(-90)");
+  scene5.yAxisLabel.append("text")
+    .html("Quantity(tonnes)");
+  scene5.yAxisLabel.transition()
+    .duration(config.transitionAnimationTime)
+    .style("opacity", 1);
   var topCountry = tradeData.valueDimension.top(1)[0];
   tradeData.yearDimension.filter(function(d) {
     var date = new Date(d);
@@ -46,13 +49,21 @@ function scene5() {
     });
 
   scene5.xAxis = scene5G.append("g")
-    .attr("class", "x axis")
+    .attr("class", "x-axis")
     .attr("transform", "translate(0," + (config.chartFrame.t+config.chartFrame.height) + ")")
+    .style("opacity", 0)
     .call(scene5.axisX)
+    .transition()
+    .duration(config.transitionAnimationTime)
+    .style("opacity", 1);
   scene5.yAxis = scene5G.append("g")
-    .attr("class", "y axis")
+    .attr("class", "y-axis")
     .attr("transform", "translate(" + (config.chartFrame.l) + ",0)")
-    .call(scene5.axisY);
+    .style("opacity", 0)
+    .call(scene5.axisY)
+    .transition()
+    .duration(config.transitionAnimationTime)
+    .style("opacity", 1);;
 
   var lineFunction = d3.svg.line()
                         .x(function(d) { return scene5.scaleX(d["Year"]); })
@@ -62,9 +73,26 @@ function scene5() {
   scene5G.append("g")
     .classed("chinaExportPathG", true)
     .append("path")
-    .attr("d", lineFunction(tradeData.yearDimension.bottom(Infinity)));
-
-  setTimeout(scene5step2, config.animationTime);
+    .attr("d", lineFunction(tradeData.yearDimension.bottom(Infinity)))
+    .style("opacity", 0)
+    .transition()
+    .duration(config.transitionAnimationTime)
+    .style("opacity", 1)
+    .each("end", function() {
+      scene5G.append("text")
+        .classed("nextButton", true)
+        .html("Next >")
+        .attr("y", innerHeight-config.margin.b)
+        .attr("x", function() { return innerWidth-config.margin.r-d3.select(this).node().getBBox().width; })
+        .style("opacity", 0)
+        .on("click", function() {
+          setTimeout(scene5step2, 0);
+          d3.select(this).remove();
+        })
+        .transition()
+        .duration(config.transitionAnimationTime)
+        .style("opacity", 1);
+    });
 }
 
 function scene5step2() {
@@ -87,11 +115,14 @@ function scene5step2() {
                                 .x(function(d) { return scene5.scaleX(d["Year"]); })
                                 .y(function(d) { return scene5.scaleY(d["Value"]); })
                                 .interpolate("linear");
-                                console.log(tradeData.yearDimension.bottom(Infinity));
           scene5.scene5G.append("g")
             .classed("USImportPathG", true)
             .append("path")
-            .attr("d", lineFunction(tradeData.yearDimension.bottom(Infinity)));
+            .attr("d", lineFunction(tradeData.yearDimension.bottom(Infinity)))
+            .style("opacity", 0)
+            .transition()
+            .duration(config.transitionAnimationTime)
+            .style("opacity", 1);
         })
     })
 }
