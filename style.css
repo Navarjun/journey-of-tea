@@ -33,6 +33,22 @@ body {
 }
 
 .factsG text {
-  font-size: 2em;
+  font-size: 1.5em;
   fill: #444;
+}
+
+.typesOfTea text {
+  font-size: 1.5em;
+  fill: #444;
+}
+
+.processRect {
+  fill: none;
+  stroke: #AAA;
+  stroke-weight: 1px;
+}
+
+.processGroup text {
+  fill: #AAA;
+  font-size: 1em;
 }

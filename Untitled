@@ -1,0 +1,155 @@
+function scene4step6() {
+  var blackteaProcessG = scene4.typesOfTeaG.append("g").classed("processGroup", true)
+    .attr("transform", "translate(15, "+(scene4.scale("Black")+10)+")");
+
+  blackteaProcessG.append("rect")
+    .classed("processRect", true)
+    .classed("pickingRect", true)
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", 100)
+    .attr("height", 50)
+    .style("opacity", 0)
+    .transition()
+    .duration(config.animationTimeDelay)
+    .style("opacity", 1)
+    .each("end", function() {
+      // adding picking label
+      blackteaProcessG.append("text")
+        .attr("x", 10)
+        .attr("y", 20)
+        .html("Picking")
+        .style("opacity", 0)
+        .transition()
+        .duration(config.animationTimeDelay)
+        .style("opacity", 1)
+        .each("end", function() {
+          // add next rect
+          blackteaProcessG.append("rect")
+            .classed("processRect", true)
+            .classed("witheringRect", true)
+            .attr("x", 110)
+            .attr("y", 0)
+            .attr("width", scene4.processRectWidth)
+            .attr("height", 50)
+            .style("opacity", 0)
+            .transition()
+            .duration(config.animationTimeDelay)
+            .style("opacity", 1)
+            .each("end", function() {
+              // add next label
+              blackteaProcessG.append("text")
+                .attr("x", 120)
+                .attr("y", 20)
+                .html("Withering")
+                .style("opacity", 0)
+                .transition()
+                .duration(config.animationTimeDelay)
+                .style("opacity", 1)
+                .each("end", function() {
+                  // add next rect
+                  blackteaProcessG.append("rect")
+                    .classed("processRect", true)
+                    .classed("oxidationRect", true)
+                    .attr("x", 110+scene4.processRectWidth+10)
+                    .attr("y", 0)
+                    .attr("width", scene4.processRectWidth)
+                    .attr("height", 50)
+                    .style("opacity", 0)
+                    .transition()
+                    .duration(config.animationTimeDelay)
+                    .style("opacity", 1)
+                    .each("end", function() {
+                      // add nextlabel
+                      blackteaProcessG.append("text")
+                        .attr("x", 110+scene4.processRectWidth+20)
+                        .attr("y", 20)
+                        .html("Oxidation")
+                        .style("opacity", 0)
+                        .transition()
+                        .duration(config.animationTimeDelay)
+                        .style("opacity", 1)
+                        .each("end", function(){
+                          // add next rect
+                          blackteaProcessG.append("rect")
+                            .classed("processRect", true)
+                            .classed("heatingRect", true)
+                            .attr("x", 110+(scene4.processRectWidth+10)*2)
+                            .attr("y", 0)
+                            .attr("width", scene4.processRectWidth)
+                            .attr("height", 50)
+                            .style("opacity", 0)
+                            .transition()
+                            .duration(config.animationTimeDelay)
+                            .style("opacity", 1)
+                            .each("end", function() {
+                              // add nextlabel
+                              blackteaProcessG.append("text")
+                                .attr("x", 110+(scene4.processRectWidth+10)*2+10)
+                                .attr("y", 20)
+                                .html("Heating")
+                                .style("opacity", 0)
+                                .transition()
+                                .duration(config.animationTimeDelay)
+                                .style("opacity", 1)
+                                .each("end", function(){
+                                  // add next rect
+                                  blackteaProcessG.append("rect")
+                                    .classed("processRect", true)
+                                    .classed("sortingRect", true)
+                                    .attr("x", 110+(scene4.processRectWidth+10)*3)
+                                    .attr("y", 0)
+                                    .attr("width", scene4.processRectWidth)
+                                    .attr("height", 50)
+                                    .style("opacity", 0)
+                                    .transition()
+                                    .duration(config.animationTimeDelay)
+                                    .style("opacity", 1)
+                                    .each("end", function() {
+                                      // add nextlabel
+                                      blackteaProcessG.append("text")
+                                        .attr("x", 110+(scene4.processRectWidth+10)*3+10)
+                                        .attr("y", 20)
+                                        .html("Rolling")
+                                        .style("opacity", 0)
+                                        .transition()
+                                        .duration(config.animationTimeDelay)
+                                        .style("opacity", 1)
+                                        .each("end", function(){
+                                          // add next rect
+                                          blackteaProcessG.append("rect")
+                                            .classed("processRect", true)
+                                            .classed("sortingRect", true)
+                                            .attr("x", 110+(scene4.processRectWidth+10)*4)
+                                            .attr("y", 0)
+                                            .attr("width", scene4.processRectWidth)
+                                            .attr("height", 50)
+                                            .style("opacity", 0)
+                                            .transition()
+                                            .duration(config.animationTimeDelay)
+                                            .style("opacity", 1)
+                                            .each("end", function() {
+                                              // add nextlabel
+                                              blackteaProcessG.append("text")
+                                                .attr("x", 110+(scene4.processRectWidth+10)*4+10)
+                                                .attr("y", 20)
+                                                .html("Drying")
+                                                .style("opacity", 0)
+                                                .transition()
+                                                .duration(config.animationTimeDelay)
+                                                .style("opacity", 1)
+                                                .each("end", function(){
+                                                  // setTimeout(scene4step4, config.animationTime);
+                                                })
+                                            });
+                                        })
+                                    });
+                                })
+                            });
+                        })
+                    });
+                });
+            })
+        });
+    });
+}

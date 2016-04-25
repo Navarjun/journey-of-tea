@@ -4,9 +4,9 @@ function scene3() {
   var scene3G = scene3.scene3G;
   d3.select("#scene2G").remove();
   var facts = [
-    "China is the only country that produces all kinds of tea.",
-    "All kinds of tea come from the same tree: Camelia Sinesis.",
-    "Only the method processing of the leaves makes it different."
+    "- China is the only country that produces all kinds of tea.",
+    "- All kinds of tea come from the same tree: Camelia Sinesis.",
+    "- Only the method processing of the leaves makes it different."
   ];
 
   var transitionCount = 0;
@@ -23,7 +23,7 @@ function scene3() {
     .attr("y", function(_, i) { return ((config.chartFrame.height/2) + (i - facts.length/2) * 40); })
     .transition()
     .duration(config.animationTime)
-    .delay(function(d, i) { return i*config.animationTime-10; })
+    .delay(function(d, i) { return i*config.animationTimeDelay; })
     .style("opacity", 1)
     .each("start", function() {
       transitionCount++;
@@ -31,7 +31,7 @@ function scene3() {
     .each("end", function() {
       transitionCount--;
       if (transitionCount == 0) {
-        setTimeout(setupScene4, config.animationTime*2);
+        setTimeout(setupScene4, config.animationTime*3);
       }
     })
 
