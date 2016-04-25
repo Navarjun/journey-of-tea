@@ -20,7 +20,27 @@ function scene6() {
     .style("opacity", 0)
     .transition()
     .duration(config.transitionAnimationTime)
-    .style("opacity", 1);
+    .style("opacity", 1)
+    .each("end",function() {
+      d3.select("body")
+        .append("div")
+        .style("position", "absolute")
+        .style("bottom", "0")
+        .style("font-size", "0.5em")
+        .style("padding-left", "50px")
+        .style("opacity", 0)
+        .html("References:</br>"+
+        "FAOSTAT. Accessed February 29, 2016. http://faostat3.fao.org/home/E.<br/>"+
+        "Gascoyne, Kevin, Francois Marchand, and Jasmin Desharnais. Tea: History, Terroirs, Varieties. First edition. edition. Richmond Hill, Ont: Firefly Books, 2011.<br/>"+
+        "Heiss, Mary Lou, and Robert J. Heiss. The Tea Enthusiast’s Handbook: A Guide to Enjoying the World’s Best Teas. 1 edition. New York: Ten Speed Press, 2010.<br/>"+
+        "The Growing Demand for Tea in the US - Market Realist. Accessed April 25, 2016. http://marketrealist.com/2015/06/growing-demand-tea-us/.<br/>"+
+        "Younger Americans Are Ditching Coffee For Tea [Infographic] - Forbes. Accessed April 25, 2016.<br/>"+
+        "“America Is Slowly—but Surely—becoming a Nation of Tea Drinkers.” Washington Post. Accessed April 25, 2016.https://www.washingtonpost.com/news/wonk/wp/2014/09/03/america-is-slowly-but-surely-becoming-a-nation-of-tea-drinkers/.<br/>" +
+        "http://www.forbes.com/sites/niallmccarthy/2015/02/26/younger-americans-are-ditching-coffee-for-tea-infographic/#4c5e8dc560b0.<br/>")
+        .transition()
+        .duration(config.transitionAnimationTime)
+        .style("opacity", 1);
+    });
 }
 
 function setupScene6() {
