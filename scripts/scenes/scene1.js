@@ -28,7 +28,7 @@ function scene1() {
     .each("end", function() {
       scene1G.append("text")
         .classed("projectTagLine", true)
-        .html("from plantations to the stores")
+        .html("from plantations to you")
         .attr("x", function(d) { return innerWidth/2-d3.select(this).node().getBBox().width/2; })
         .attr("y", function(d) { return innerHeight/2+placeholderHeight/2; })
         .style("opacity", 0)
