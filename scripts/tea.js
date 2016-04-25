@@ -108,11 +108,12 @@ queue()
 var sceneTransition = function(callback) {
   setTimeout(function() {
     var count = 0;
-    d3.selectAll("g")
+    d3.selectAll("g.scene")
       .transition()
       .ease("cubic")
       .duration(config.transitionAnimationTime)
       .attr("transform", function(d) {
+        console.log(this);
         var transformString = d3.select(this).attr("transform");
         var transformValue = transformString.substring(transformString.indexOf("(")+1, transformString.indexOf(","));
         transformValue = parseInt(transformValue) - innerWidth;

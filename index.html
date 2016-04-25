@@ -4,16 +4,26 @@
 <head>
   <meta charset="utf-8"/>
   <title>Journey of Tea</title>
-  <script src="./scripts/lib/p5.min.js"></script>
-  <script src="./scripts/p5.objects.js"></script>
-  <script src="./scripts/p5.scale.js"></script>
-  <script src="./scripts/p5.animation.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
   <script src="./scripts/lib/d3.min.js"></script>
+  <script src="./scripts/lib/queue.min.js" ></script>
+  <script src="./scripts/lib/crossfilter.js" ></script>
 </head>
 
 <body>
-  <script src="./scripts/scene-1.js"></script>
-  <script src="./scripts/index.js"></script>
+  <div class="container">
+    <svg id="canvas">
+    </svg>
+  </div>
+
+  <script src="./scripts/scenes/scene1.js"></script>
+  <script src="./scripts/scenes/scene2.js"></script>
+  <script src="./scripts/scenes/scene3.js"></script>
+  <script src="./scripts/scenes/scene4.js"></script>
+  <script src="./scripts/scenes/scene5.js"></script>
+  <script src="./scripts/scenes/scene6.js"></script>
+  <script src="./scripts/tea.js"></script>
+
 </body>
 
 </html>
